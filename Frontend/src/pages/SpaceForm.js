@@ -134,9 +134,9 @@ const SpaceForm = () => {
                     <label htmlFor="parking" className="form-label">Parking</label>
                     <select className="form-select" value={form?.parking_id} onChange={(e) => handleFormChange({ key: 'parking_id', value: e.target.value })} >
                         <option value="">Select</option>
-                        {/* {parkings?.map((item) => (
+                        {parkings?.map((item) => (
                             <option value={item?._id}>{item?.name}</option>
-                        ))} */}
+                        ))}
                     </select>
                 </div>
                 <button type="submit" className="btn btn-primary mt-4" onClick={handleSubmit}>Submit</button>
