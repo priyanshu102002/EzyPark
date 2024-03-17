@@ -27,7 +27,7 @@ app.use(cors())
 // Connect Database
 connectDB();
 
-const __dirname = path.resolve();
+// const __dirname = path.resolve();
 
 app.get('/', isLoggedIn, async (req, res) => {
     res.json({ message: 'Hello world!'})
