@@ -27,7 +27,12 @@ app.use(cors())
 // Connect Database
 connectDB();
 
-// const __dirname = path.resolve();
+const __dirname = path.resolve()
+app.use(express.static(path.join(__dirname,"Frontend/build")));
+
+app.get("*", (req, res) => { 
+    res.sendFile(path.join(__dirname, 'Frontend', 'build', 'index.html'))
+})
 
 app.get('/', isLoggedIn, async (req, res) => {
     res.json({ message: 'Hello world!'})
@@ -40,10 +45,7 @@ app.use("/booking", bookingRouter)
 app.use("/space", spaceRouter)
 app.use("/review", reviewRouter)
 
-app.use(express.static(path.join(__dirname,"Frontend/build")));
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, 'Frontend', 'build', 'index.html'))
-})
+
 
 // Error handler
 
