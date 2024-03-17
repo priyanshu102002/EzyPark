@@ -12,6 +12,7 @@ const spaceRouter = require("./controllers/spaceRouter");
 const cors = require('cors');
 const dotenv = require("dotenv");
 const reviewRouter = require("./controllers/review");
+const path = require("path")
 
 
 // Set body-parser
@@ -26,6 +27,7 @@ app.use(cors())
 // Connect Database
 connectDB();
 
+const __dirname = path.resolve();
 
 app.get('/', isLoggedIn, async (req, res) => {
     res.json({ message: 'Hello world!'})
@@ -37,6 +39,11 @@ app.use("/paymentMethod", paymentMethodRouter)
 app.use("/booking", bookingRouter)
 app.use("/space", spaceRouter)
 app.use("/review", reviewRouter)
+
+app.use(express.static(path.join(__dirname,"Frontend/build")));
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "Frontend/build", "index.html"))
+})
 
 // Error handler
 
