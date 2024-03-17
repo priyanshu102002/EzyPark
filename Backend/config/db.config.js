@@ -4,8 +4,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const connectDB = () => {
-	const url =
-		"mongodb+srv://priyanshukr449:V0wyA9yqz6IOyZub@ezyparkdb.rxygru1.mongodb.net/ezyparking";
+	const url =process.env.MONGODB_URL
 
 	mongoose.connect(url, {
 		useNewUrlParser: true,
